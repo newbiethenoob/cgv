@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.board">
+	<delete id="delete" parameterType="java.lang.String">
+		delete from board where bid=#{bid}
+	</delete>
+
+	<update id="update" parameterType="com.spring.dto.BoardDto">
+		update board set btitle=#{btitle}, bcontent=#{bcontent} where bid=#{bid}
+	</update>
+	
+	<select id="content" resultType="com.spring.dto.BoardDto" parameterType="java.lang.String">
+		select bid, btitle, bcontent ,bhit, to_char(bdate, 'yyyy/mm/dd') bdate
+			from board where bid=#{bid}	
+	</select>
+	
+	<update id="updateHit" parameterType="java.lang.String">
+		update board set bhit = bhit+1 where bid=#{bid}
+	</update>
+
+	<insert id="write" parameterType="com.spring.dto.BoardDto">
+		INSERT INTO BOARD VALUES('b_'||SEQU_BOARD_BID.nextval,#{btitle},#{bcontent},0,sysdate)
+	</insert>
+	
+	<select id="listAll"
+			resultType="com.spring.dto.BoardDto">
+		select rownum, rno, bid, btitle, bhit, to_char(bdate,'yyyy/mm/dd') bdate 
+		 	from (select bid, btitle, bhit, bdate from board 
+		 			order by bdate desc)
+	</select>
+	
+	
+</mapper>
