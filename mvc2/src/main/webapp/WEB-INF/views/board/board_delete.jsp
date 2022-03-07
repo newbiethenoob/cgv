@@ -15,7 +15,8 @@
 	<div class="content">
 		<section class="login">
 			<h1>게시판</h1>
-			<form name="boardForm" action="" method="get">
+			<form name="boardForm" action="board_delete" method="post">
+				<input type="hidden" name="bid" value="${bid }">
 				<table class="board_delete">
 					<tr>						
 						<td>
@@ -26,7 +27,7 @@
 					</tr>									
 					<tr>					
 						<td>
-							<button type="button" class="btn_style3">삭제완료</button>
+							<button type="submit" class="btn_style3">삭제완료</button>
 							<a href="board_content">
 								<button type="button" class="btn_style3">이전페이지</button>
 							</a>

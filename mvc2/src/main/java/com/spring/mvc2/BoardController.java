@@ -42,7 +42,7 @@ public class BoardController {
 	 * 제목 : 게시판 수정 화면 delete
 	 * @return 
 	 */
-	@RequestMapping(value="/board_delete", method=RequestMethod.GET)
+	@RequestMapping(value="/board_delete", method=RequestMethod.POST)
 	public ModelAndView board_delete(String bid) {
 		ModelAndView mv = new ModelAndView();
 //		BoardDao dao = new BoardDao();
@@ -51,6 +51,22 @@ public class BoardController {
 		
 		mv.setViewName("/board/board_delete");
 		mv.addObject("board", dto);
+		
+		return mv;
+	}
+	/**
+	 * 제목 : 게시판 삭제 처리 페이지 delete
+	 * @return 
+	 */
+	@RequestMapping(value="/board_delete", method=RequestMethod.POST)
+	public ModelAndView board_delete_proc(String bid) {
+		ModelAndView mv = new ModelAndView();
+		BoardDao dao = new BoardDao();
+		int result = dao.delete(bid);
+		
+		if(result == 1) {
+			mv.setViewName("redirect:/board_delete");
+		}
 		
 		return mv;
 	}

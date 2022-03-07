@@ -58,7 +58,7 @@ public class BoardDao extends DBConn{
 	}
 
 	/**
-	 * C : 게시글 삭제
+	 * C : 게시글 삭제 delete
 	 */
 	public int delete(String bid) {
 		return sqlSession.delete(namespace+".delete",bid);
@@ -68,6 +68,7 @@ public class BoardDao extends DBConn{
 	 * C : 게시글 update
 	 */
 	public int update(BoardDto dto) {
+		return sqlSession.update(namespace+".update",dto);
 		/*
 		 * int result = 0; String sql =
 		 * "update board set btitle=?, bcontent=? where bid=?";
@@ -79,7 +80,7 @@ public class BoardDao extends DBConn{
 		 * 
 		 * close(); } catch (Exception e) { e.printStackTrace(); } return result;
 		 */
-		return sqlSession.update(namespace+".update",dto);
+
 	}
 	/**
 	 * C : 게시글 조회수 update
