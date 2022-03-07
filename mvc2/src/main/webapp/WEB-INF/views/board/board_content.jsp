@@ -18,26 +18,26 @@
 			<table class="board_content">
 				<tr>					
 					<th>제목</th>
-					<td>이털너스 재미있어요~^^</td>					
+					<td>${board.btitle}</td>					
 				</tr>
 				<tr>					
 					<th>내용</th>
-					<td>마동석 멋있어요~~<br><br><br></td>					
+					<td>${board.bcontent}<br><br><br></td>					
 				</tr>
 				<tr>					
 					<th>조회수</th>
-					<td>100</td>					
+					<td>${board.bhit}</td>					
 				</tr>
 				<tr>					
 					<th>작성일자</th>
-					<td>2021/12/02</td>					
+					<td>${board.bdate}</td>					
 				</tr>
 				<tr>					
 					<td colspan="2">
-						<a href="board_update">
+						<a href="board_update?bid=${board.bid}">
 							<button type="button" class="btn_style3">수정하기</button>
 						</a>
-						<a href="board_delete">
+						<a href="board_delete?bid=${board.bid}">
 							<button type="button" class="btn_style3">삭제하기</button>
 						</a>
 						<a href="board_list">

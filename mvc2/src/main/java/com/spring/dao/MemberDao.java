@@ -18,13 +18,17 @@ public class MemberDao extends DBConn{
 	private static String namespace = "mapper.member";
 	
 	/*
-	 * R(select) : 회원리스트 select
+	 * R(select) : 회원리스트 select (admin/member/member_list)
 	 */
 	public ArrayList<MemberDto> select(){
 		System.out.println("회원 리스트 ---> select"+"    "+sqlSession);
 		List<MemberDto> list = new ArrayList<MemberDto>();
 		list = sqlSession.selectList(namespace+".listAll");
 		return (ArrayList<MemberDto>)list;
+		
+//		String sql = " select rownum rno, id, name, email, hp_num, hobby " 
+//			    + " from (select id, name, email, hp_num, hobby "
+//			    + "	     from member order by id) ";
 	}
 	
 	/*
@@ -66,11 +70,6 @@ public class MemberDao extends DBConn{
 //		
 //		return result;
 //	}
-
-
-
-	
-
 	
 	/*	
 	ArrayList<MemberDto> list = new ArrayList<MemberDto>();

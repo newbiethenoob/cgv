@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,14 +25,16 @@
 					<th>폰번호</th>
 					<th>취미</th>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td><a href="#">test</a></td>
-					<td>홍길동</td>
-					<td>test@naver.com</td>
-					<td>010-1111-1234</td>
-					<td>영화감상</td>
-				</tr>
+				<c:forEach var="member" items="${list}"> <!-- AdminController의 회원 리스트 페이지에서 보내는 객체 -->
+					<tr>
+						<td>${member.rno}</td>
+						<td><a href="#">${member.id }</a></td>
+						<td>${member.name }</td>
+						<td>${member.email }</td>
+						<td>${member.hp_num }</td>
+						<td>${member.hobby }</td>
+					</tr>
+				</c:forEach>
 				
 				<tr>
 					<td colspan="6"><< 1  2  3  4  5  >></td>					

@@ -16,25 +16,26 @@
 	<div class="content">
 		<section class="login">
 			<h1>게시판</h1>
-			<form name="boardUpdateForm" action="" method="get">
+			<form name="boardUpdateForm" action="board_update" method="post">
+				<input type="hidden" name="bid" value="${board.bid }">
 				<table class="board_update">
 					<tr>					
 						<th>제목</th>
 						<td>
-							<input type="text" name="btitle" value="이털너스 재미있어요~^^" id="btitle">
+							<input type="text" name="btitle" value="${board.btitle}" id="btitle">
 						</td>					
 					</tr>
 					<tr>					
 						<th>내용</th>
 						<td>
-							<textarea rows="10" cols="50" name="bcontent">마동석 멋있어요~~</textarea>
+							<textarea rows="10" cols="50" name="bcontent">${board.bcontent}</textarea>
 						</td>					
 					</tr>				
 					<tr>					
 						<td colspan="2">
 							<button type="button" class="btn_style3" onclick="boardUpdateFormCheck()">수정완료</button>
 							<button type="reset" class="btn_style3">다시쓰기</button>
-							<a href="board_content">
+							<a href="board_content?bid=${board.bid}">
 								<button type="button" class="btn_style3">이전페이지</button>
 							</a>
 							<a href="board_list">

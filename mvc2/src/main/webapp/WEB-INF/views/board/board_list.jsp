@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,66 +28,14 @@
 					<th>조회수</th>
 					<th>작성일자</th>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td><a href="board_content">이털너스 재미있어요~^^</a></td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>9</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td>[공지]전체 시스템 점검 예정입니다.</td>
-					<td>100</td>
-					<td>2021/12/02</td>
-				</tr>
+				<c:forEach var="board" items="${list}">
+					<tr>
+						<td>${board.rno}</td>
+						<td><a href="board_content?bid=${board.bid}">${board.btitle}</a></td>
+						<td>${board.bhit}</td>
+						<td>${board.bdate}</td>
+					</tr>
+				</c:forEach>
 				<tr>
 					<td colspan="4"><< 1  2  3  4  5  >></td>					
 				</tr>

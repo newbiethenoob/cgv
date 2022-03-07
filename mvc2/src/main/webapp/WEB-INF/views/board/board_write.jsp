@@ -16,7 +16,7 @@
 	<div class="content">
 		<section class="login">
 			<h1>게시판</h1>
-			<form name="boardForm" action="" method="get">
+			<form name="boardForm" action="board_write" method="post">
 				<table class="board_write">
 					<tr>					
 						<th>제목</th>

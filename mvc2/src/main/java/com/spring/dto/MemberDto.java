@@ -7,11 +7,18 @@ public class MemberDto {
 	 * tel 필드는 member 테이블의 hp_comp 필드와 매핑
 	 * 
 	 */
+	int rno;
 	String id, pass, name, gender, email1, email2, email, 
 		addr1, addr2, address, tel, hp1, hp2, hp3, hp_num, intro, hobby;
 	String[] hobby_list;
 	
 //	Getter, Setter
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
 	public String getId() {
 		return id;
 	}
@@ -49,7 +56,10 @@ public class MemberDto {
 		this.email2 = email2;
 	}
 	public String getEmail() {
-		return email1+"@"+email2;
+		if(email1 !=null) {
+			email = email1+"@"+email2;
+		}
+		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
@@ -97,7 +107,10 @@ public class MemberDto {
 		this.hp3 = hp3;
 	}
 	public String getHp_num() {
-		return hp1+"-"+hp2+"-"+hp3;
+		if(hp1 != null) {
+			hp_num = hp1+"-"+hp2+"-"+hp3;
+		}
+		return hp_num;
 	}
 	public void setHp_num(String hp_num) {
 		this.hp_num = hp_num;
@@ -109,7 +122,9 @@ public class MemberDto {
 		this.intro = intro;
 	}
 	public String getHobby() {
-		hobby = String.join(",", hobby_list);
+		if(hobby_list.length != 0) {
+			hobby = String.join(",", hobby_list);
+		}
 		return hobby;
 	}
 	public void setHobby(String hobby) {

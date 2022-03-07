@@ -56,7 +56,7 @@ public class BoardController {
 	}
 	
 	/**
-	 * 제목 : 회원 리스트 페이지 list
+	 * 제목 : 게시판 리스트 페이지 list
 	 * @return
 	 */
 	@RequestMapping(value="/board_list", method=RequestMethod.GET)
@@ -78,10 +78,11 @@ public class BoardController {
 	 * 제목 : 게시판 수정 처리 update
 	 * @return 
 	 */
-	@RequestMapping(value="/board_update", method=RequestMethod.GET)
+	@RequestMapping(value="/board_update", method=RequestMethod.POST)
 	public ModelAndView board_update(BoardDto dto) {
 		ModelAndView mv = new ModelAndView();
 		BoardDao dao = new BoardDao();
+//		BoardDto dto = dao.select(bid);
 		int result = dao.update(dto);
 		if(result == 1) {
 			mv.setViewName("/board/board_update");
@@ -92,11 +93,22 @@ public class BoardController {
 	}
 
 	/**
-	 * 제목 : 회원 리스트 페이지
+	 * 제목 : 게시판 글쓰기 화면
+	 * @return
+	 */
+	@RequestMapping(value="/board_write",method=RequestMethod.GET)
+	public String board_write() {
+		return "/board/baord_write";
+	}
+	
+	/**
+	 * 제목 : 게시판 글쓰기 등록
 	 * @return
 	 */
 	@RequestMapping(value="/board_write", method=RequestMethod.POST)
 	public String board_write(BoardDto dto) {
+//		BoardDao dao = new BoardDao(); //DB연동 객체 생성
+//		int result = dao.insert(dto); //Dao에서 insert 메소드 호출하고 결과값 저장
 		String result_page = "";
 		
 		int result = boardService.getWrite(dto);
