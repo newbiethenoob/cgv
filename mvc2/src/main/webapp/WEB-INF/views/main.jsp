@@ -23,12 +23,12 @@
 		<div class="bg_carousel"> <!-- background-image 추가 100% -->
 			<div class="carousel">
 				<!-- <h3>Carousel 추가부분</h3>-->
-				<img src="http://localhost:8899/mvc2/resources/resources/images/16347931161070.jpg">
+				<img src="http://localhost:8899/mvc2/resources/images/16347931161070.jpg">
 			</div>
 		</div>		
 		<!-- movie selection -->
 		<section>
-			<div><img src="http://localhost:8899/mvc2/resources/resources/images/h3_movie_selection.gif"></div>
+			<div><img src="http://localhost:8899/mvc2/resources/images/h3_movie_selection.gif"></div>
 			<iframe width="710" height="400" src="https://www.youtube.com/embed/SndPCQiu5gs" 
 			title="YouTube video player" frameborder="0" 
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -38,9 +38,9 @@
 		
 		<!-- event -->
 		<section>
-			<div><img src="http://localhost:8899/mvc2/resources/resources/images/h3_event.gif"></div>
+			<div><img src="http://localhost:8899/mvc2/resources/images/h3_event.gif"></div>
 			<div class="event1">
-				<img src="http://localhost:8899/mvc2/resources/resources/images/16170705205160.jpg">
+				<img src="http://localhost:8899/mvc2/resources/images/16170705205160.jpg">
 				<img src="http://localhost:8899/mvc2/resources/images/16315139087750.jpg">
 				<img src="http://localhost:8899/mvc2/resources/images/16315139088220.jpg">
 				<img src="http://localhost:8899/mvc2/resources/images/16315179619950.jpg">

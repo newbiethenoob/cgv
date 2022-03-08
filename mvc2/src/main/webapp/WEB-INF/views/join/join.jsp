@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>mvc2-회원가입</title>
-<link href="http://localhost:8899/mvc2/resources/css/mvc2.css" rel="stylesheet">
-<script src="http://localhost:8899/mvc2/resources/js/mvc2.js"></script>
+<link href="http://localhost:8899/mvc2/resources/css/cgv.css" rel="stylesheet">
+<script src="http://localhost:8899/mvc2/resources/js/cgv.js"></script>
 
 </head>
 <body>

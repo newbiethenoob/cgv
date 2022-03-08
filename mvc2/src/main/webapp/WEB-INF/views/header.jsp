@@ -12,8 +12,8 @@
 		<div class="header_menu">
 			<nav>
 				<ul>
-					<li><a href="http://localhost:8899/mvc2/login/login" target="_parent">로그인</a></li>
-					<li><a href="http://localhost:8899/mvc2/join/join" target="_parent">회원가입</a></li>
+					<li><a href="http://localhost:8899/mvc2/login" target="_parent">로그인</a></li>
+					<li><a href="http://localhost:8899/mvc2/join" target="_parent">회원가입</a></li>
 					<li><a href="http://localhost:8899/mvc2/mypage/mycgv" target="_parent">MyCGV</a></li>
 					<li><a href="">VIP</a></li>
 					<li><a href="">고객센터</a></li>

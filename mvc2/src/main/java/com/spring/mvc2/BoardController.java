@@ -129,7 +129,7 @@ public class BoardController {
 		public String board_write(BoardDto dto, HttpServletRequest request) throws Exception {
 			int result = 0;
 			
-			if(dto.getFile1().getOriginalFilename() != null){
+			if(!dto.getFile1().getOriginalFilename().equals(null)/* != null*/){ 
 				//파일 존재 - 실제 파일의 저장위치 가져오기
 				String root_path = request.getSession().getServletContext().getRealPath("/");
 				String attach_path = "\\resources\\upload\\";
@@ -142,16 +142,16 @@ public class BoardController {
 				System.out.println(bfile);
 				System.out.println(bsfile);
 				
-//				//DB저장
-//				dto.setBfile(bfile);
-//				dto.setBsfile(bsfile);
-//				result = boardService.getWrite(dto);
-//				
-//				//DB저장 완료 후 폴더에 저장하기
-//				System.out.println(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
-//				File file 
-//				= new File(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
-//				dto.getFile1().transferTo(file);
+				//DB저장
+				dto.setBfile(bfile);
+				dto.setBsfile(bsfile);
+				result = boardService.getWrite(dto);
+				
+				//DB저장 완료 후 폴더에 저장하기
+				System.out.println(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
+				File file 
+				= new File(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
+				dto.getFile1().transferTo(file);
 				
 			}else{
 				//파일 없음

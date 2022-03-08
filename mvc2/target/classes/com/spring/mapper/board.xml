@@ -23,7 +23,7 @@
 	</update>
 
 	<insert id="write" parameterType="com.spring.dto.BoardDto">
-		INSERT INTO BOARD VALUES('b_'||SEQU_BOARD_BID.nextval,#{btitle},#{bcontent},0,sysdate)
+		INSERT INTO BOARD VALUES('b_'||SEQU_BOARD_BID.nextval,#{btitle},#{bcontent},0,sysdate,#{bfile},#{bsfile})
 	</insert>
 	
 	<select id="listAll"
