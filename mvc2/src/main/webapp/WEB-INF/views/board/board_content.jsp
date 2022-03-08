@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +32,27 @@
 				<tr>					
 					<th>작성일자</th>
 					<td>${board.bdate}</td>					
+				</tr>
+				<!-- 파일 업로드 -->
+				<tr>					
+					<th>파일명</th>
+					<td>
+						<c:if test="${not empty board.bfile}">	
+							${board.bfile }<br><br><br>	
+						    <img src="http://localhost:8899/model2/resources/upload/${board.bsfile }"
+						  	 width="200" height="100">
+						</c:if>	
+					</td>		
+				</tr>
+				<!-- 파일 다운로드 -->
+				<tr>					
+					<th>파일다운로드</th>
+					<td>
+						<form action="download" method="get">
+							<input type="hidden" name="filename" value="${board.bsfile}">
+							<input type="submit" value="다운로드">
+						</form>
+					</td>					
 				</tr>
 				<tr>					
 					<td colspan="2">

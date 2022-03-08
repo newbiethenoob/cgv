@@ -1,15 +1,20 @@
 package com.spring.mvc2;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.dao.BoardDao;
@@ -40,6 +45,28 @@ public class BoardController {
 		mv.addObject("board",dto);
 		
 		return mv;
+	}
+	
+	/**
+	 * 力格 : 颇老 促款肺靛
+	 * @return
+	 */	
+	@RequestMapping(value="/download", method=RequestMethod.GET)
+	@ResponseBody
+	public byte[] downlod(HttpServletResponse response,
+			      @RequestParam String filename) throws IOException{
+		
+		String FILE_PATH = "C:\\dev\\sts-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\mvc2\\\\resources\\upload\\";
+				
+		File file = new File(FILE_PATH, filename);
+		
+		byte[] bytes = FileCopyUtils.copyToByteArray(file);
+		
+		String fn = new String(file.getName().getBytes(), "utf-8");
+		response.setHeader("Content-Disposition", "attachment;filename=\"" + fn + "\"");
+		response.setContentLength(bytes.length);
+		
+		return bytes;
 	}
 	
 	/**

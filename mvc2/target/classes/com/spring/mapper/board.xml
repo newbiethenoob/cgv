@@ -14,7 +14,7 @@
 	</update>
 	
 	<select id="content" resultType="com.spring.dto.BoardDto" parameterType="java.lang.String">
-		select bid, btitle, bcontent ,bhit, to_char(bdate, 'yyyy/mm/dd') bdate
+		select bid, btitle, bcontent ,bhit, to_char(bdate, 'yyyy/mm/dd') bdate, bfile, bsfile
 			from board where bid=#{bid}	
 	</select>
 	
