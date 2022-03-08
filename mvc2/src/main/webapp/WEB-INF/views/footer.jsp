@@ -10,7 +10,7 @@
 <body>
 	<footer>
 		<div class="bg_footer">
-			<img src="https://adimg.cgv.co.kr/images/202111/cgvgift/1109_980x240.png">
+			<img src="https://adimg.cgv.co.kr/resources/images/202111/cgvgift/1109_980x240.png">
 		</div>
 		<div class="footer_menu">
 			<nav>

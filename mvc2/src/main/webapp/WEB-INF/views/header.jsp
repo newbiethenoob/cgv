@@ -24,10 +24,10 @@
 			</nav>
 			<div class="relative">
 				<a href="http://localhost:8899/mvc2/main" target="_parent">
-					<img src="http://localhost:8899/mvc2/images/h1_cgv.png">
+					<img src="http://localhost:8899/mvc2/resources/images/h1_cgv.png">
 				</a>
 				<div>
-					<img src="http://localhost:8899/mvc2/images/h2_cultureplex.png">
+					<img src="http://localhost:8899/mvc2/resources/images/h2_cultureplex.png">
 					<nav>
 						<ul>
 							<li><a href="">영화</a></li>
