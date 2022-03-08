@@ -35,17 +35,37 @@
 				</tr>
 				<!-- 파일 업로드 -->
 				<tr>					
-					<th>파일명</th>
+					<th>파일1</th>
 					<td>
-						<c:if test="${not empty board.bfile}">	
+						<c:if test="${board.bfile != null }">
 							${board.bfile }<br><br><br>	
-						    <img src="http://localhost:8899/model2/resources/upload/${board.bsfile }"
-						  	 width="200" height="100">
-						</c:if>	
-					</td>		
+							<img src="http://localhost:8899/mvc2/resources/upload/${board.bsfile }"
+							   width="200" height="100">
+						  <form action="download" method="get">
+							<input type="hidden" name="filename" value="${board.bsfile}">
+							<input type="submit" value="다운로드">
+						</form>
+						</c:if>
+						
+					</td>					
+				</tr>
+				<tr>					
+					<th>파일2</th>
+					<td>
+						<c:if test="${board.bfile2 != null }">
+							${board.bfile2 }<br><br><br>	
+							<img src="http://localhost:8899/mvc2/resources/upload/${board.bsfile2 }"
+							   width="200" height="100">
+						  <form action="download" method="get">
+							<input type="hidden" name="filename" value="${board.bsfile2}">
+							<input type="submit" value="다운로드">
+						</form>
+						</c:if>
+						
+					</td>					
 				</tr>
 				<!-- 파일 다운로드 -->
-				<tr>					
+<%-- 				<tr>					
 					<th>파일다운로드</th>
 					<td>
 						<form action="download" method="get">
@@ -53,7 +73,7 @@
 							<input type="submit" value="다운로드">
 						</form>
 					</td>					
-				</tr>
+				</tr> --%>
 				<tr>					
 					<td colspan="2">
 						<a href="board_update?bid=${board.bid}">
