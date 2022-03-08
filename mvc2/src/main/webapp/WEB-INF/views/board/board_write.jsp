@@ -16,7 +16,7 @@
 	<div class="content">
 		<section class="login">
 			<h1>게시판</h1>
-			<form name="boardForm" action="board_write" method="post">
+			<form name="boardForm" action="board_write" method="post" enctype="multipart/form-data">
 				<table class="board_write">
 					<tr>					
 						<th>제목</th>
@@ -29,7 +29,13 @@
 						<td>
 							<textarea name="bcontent"></textarea>
 						</td>					
-					</tr>				
+					</tr>	
+					<tr>					
+					<th>파일첨부</th>
+						<td>
+							<input type="file" name="file1">
+						</td>					
+					</tr>			
 					<tr>					
 						<td colspan="2">
 							<button type="button" class="btn_style3" onclick="boardFormCheck()">등록완료</button>

@@ -1,6 +1,10 @@
 package com.spring.mvc2;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -122,19 +126,46 @@ public class BoardController {
 	 * @return
 	 */
 	@RequestMapping(value="/board_write", method=RequestMethod.POST)
-	public String board_write(BoardDto dto) {
-//		BoardDao dao = new BoardDao(); //DB연동 객체 생성
-//		int result = dao.insert(dto); //Dao에서 insert 메소드 호출하고 결과값 저장
-		String result_page = "";
-		
-		int result = boardService.getWrite(dto);
-		
-		if(result == 1) {
-			result_page = "redirect:/board_list";
+		public String board_write(BoardDto dto, HttpServletRequest request) throws Exception {
+			int result = 0;
+			
+			if(dto.getFile1().getOriginalFilename() != null){
+				//파일 존재 - 실제 파일의 저장위치 가져오기
+				String root_path = request.getSession().getServletContext().getRealPath("/");
+				String attach_path = "\\resources\\upload\\";
+					
+				//bsfile 중복방지 처리
+				UUID uuid = UUID.randomUUID();
+				String bfile = dto.getFile1().getOriginalFilename();
+				String bsfile = uuid +"_"+dto.getFile1().getOriginalFilename();
+				
+				System.out.println(bfile);
+				System.out.println(bsfile);
+				
+//				//DB저장
+//				dto.setBfile(bfile);
+//				dto.setBsfile(bsfile);
+//				result = boardService.getWrite(dto);
+//				
+//				//DB저장 완료 후 폴더에 저장하기
+//				System.out.println(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
+//				File file 
+//				= new File(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
+//				dto.getFile1().transferTo(file);
+				
+			}else{
+				//파일 없음
+				System.out.println("선택 파일 없음~");
+			}
+					
+			
+			String result_page = "";
+			if(result == 1) {
+				result_page = "redirect:/board_list";
+			}
+			
+			return result_page;
 		}
-	
-		return result_page;
-	}
 	
 
 	

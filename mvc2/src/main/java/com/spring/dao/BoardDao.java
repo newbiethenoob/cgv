@@ -13,7 +13,7 @@ import com.spring.dto.BoardDto;
 import com.spring.dto.BoardDto;
 
 @Repository
-public class BoardDao extends DBConn{
+public class BoardDao{
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;

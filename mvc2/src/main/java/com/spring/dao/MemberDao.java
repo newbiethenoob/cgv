@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.dto.MemberDto;
 
 @Repository
-public class MemberDao extends DBConn{
+public class MemberDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
