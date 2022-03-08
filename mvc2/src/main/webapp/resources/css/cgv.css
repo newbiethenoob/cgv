@@ -68,7 +68,7 @@
 		header style sheet
 	**********************************************/
 	header {
-		background-image:url("http://localhost:9000/cgv/images/bg_header.gif");
+		background-image:url("http://localhost:8899/mvc2/resources/images/bg_header.gif");
 		width:100%;
 		height:149px;
 	}
@@ -191,7 +191,7 @@
 		main style sheet
 	***********************************************/
 	div.bg_carousel {
-		background-image:url("http://localhost:9000/cgv/images/carousel_bg.png");		
+		background-image:url("http://localhost:8899/mvc2/resources/images/carousel_bg.png");		
 		margin-top:-4px;	
 	}
 	div.content section > div  {
