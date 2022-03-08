@@ -61,14 +61,14 @@ public class BoardDao{
 	 * C : 게시글 삭제 delete
 	 */
 	public int delete(String bid) {
-		return sqlSession.delete(namespace+".delete",bid);
+		return sqlSession.delete(namespace+".delete", bid);
 	}
 	
 	/**
 	 * C : 게시글 update
 	 */
 	public int update(BoardDto dto) {
-		return sqlSession.update(namespace+".update",dto);
+		return sqlSession.update(namespace+".update", dto);
 		/*
 		 * int result = 0; String sql =
 		 * "update board set btitle=?, bcontent=? where bid=?";

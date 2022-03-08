@@ -37,6 +37,12 @@
 						</td>					
 					</tr>			
 					<tr>					
+					<th>파일첨부</th>
+						<td>
+							<input type="file" name="file2">
+						</td>					
+					</tr>			
+					<tr>					
 						<td colspan="2">
 							<button type="button" class="btn_style3" onclick="boardFormCheck()">등록완료</button>
 							<button type="reset" class="btn_style3">다시쓰기</button>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.dao.BoardDao;
@@ -145,7 +146,7 @@ public class BoardController {
 	 */
 	@RequestMapping(value="/board_write",method=RequestMethod.GET)
 	public String board_write() {
-		return "/board/baord_write";
+		return "/board/board_write";
 	}
 	
 	/**
@@ -155,43 +156,97 @@ public class BoardController {
 	@RequestMapping(value="/board_write", method=RequestMethod.POST)
 		public String board_write(BoardDto dto, HttpServletRequest request) throws Exception {
 			int result = 0;
+			System.out.println("length--> "+dto.getFileList().length);
 			
-			if(!dto.getFile1().getOriginalFilename().equals(null)/* != null*/){ 
+			//1. 파일 리스트 배열 ---> for문 반복
+			for(int i=0; i<dto.getFileList().length;i++) {
+				//1-1. 반복 로직에서 파일 유무 체크 후 파일명, 중복 방지 파일명 생성
+				if(!dto.getFileList()[i].getOriginalFilename().equals("")){ 
+					//서버저장 파일명(bsfile, bsfile2) 중복방지 처리
+					UUID uuid = UUID.randomUUID();
+					String bfile = dto.getFileList()[i].getOriginalFilename();
+					String bsfile = uuid +"_"+dto.getFileList()[i].getOriginalFilename();
+				
+					//1-2. 인덱스 체크 후 각각의 변수명에 저장
+					if(i==0) {
+						dto.setBfile(bfile);
+						dto.setBsfile(bsfile);
+					}else {
+						dto.setBfile2(bfile);
+						dto.setBsfile2(bsfile);
+					}
+				}else {
+					if(i==0) {
+						dto.setBfile("");
+						dto.setBsfile("");
+					}else {
+						dto.setBfile2("");
+						dto.setBsfile2("");
+					}
+				}
+			}
+
+			//2. DB 정장
+			result = boardService.getWrite(dto);
+			
+			//3. DB 저장 성공 --> 파일을 upload 폴더에 저장
+			if(result == 1) {
 				//파일 존재 - 실제 파일의 저장위치 가져오기
 				String root_path = request.getSession().getServletContext().getRealPath("/");
 				String attach_path = "\\resources\\upload\\";
-					
-				//bsfile 중복방지 처리
-				UUID uuid = UUID.randomUUID();
-				String bfile = dto.getFile1().getOriginalFilename();
-				String bsfile = uuid +"_"+dto.getFile1().getOriginalFilename();
-				
-				System.out.println(bfile);
-				System.out.println(bsfile);
-				
-				//DB저장
-				dto.setBfile(bfile);
-				dto.setBsfile(bsfile);
-				result = boardService.getWrite(dto);
-				
+		
 				//DB저장 완료 후 폴더에 저장하기
-				System.out.println(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
-				File file 
-				= new File(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
-				dto.getFile1().transferTo(file);
-				
-			}else{
-				//파일 없음
-				System.out.println("선택 파일 없음~");
+				//for(CommonsMultipartFile file : dto.getFileList()) {
+					System.out.println(root_path + attach_path + dto.getBsfile());
+					System.out.println(root_path + attach_path + dto.getBsfile2());
+					File save_file1 = new File(root_path + attach_path + dto.getBsfile());
+					File save_file2 = new File(root_path + attach_path + dto.getBsfile2());
+					dto.getFile1().transferTo(save_file1);
+					dto.getFile1().transferTo(save_file2);
+				//}
+
 			}
-					
 			
+
+			
+//			if(!dto.getFile1().getOriginalFilename().equals(null)/* != null*/){ 
+//				//파일 존재 - 실제 파일의 저장위치 가져오기
+//				String root_path = request.getSession().getServletContext().getRealPath("/");
+//				String attach_path = "\\resources\\upload\\";
+//					
+//				//bsfile 중복방지 처리
+//				UUID uuid = UUID.randomUUID();
+//				String bfile = dto.getFile1().getOriginalFilename();
+//				String bsfile = uuid +"_"+dto.getFile1().getOriginalFilename();
+//				
+//				System.out.println(bfile);
+//				System.out.println(bsfile);
+//				
+//				//DB저장
+//				dto.setBfile(bfile);
+//				dto.setBsfile(bsfile);
+//				result = boardService.getWrite(dto);
+//				
+//				//DB저장 완료 후 폴더에 저장하기
+//				System.out.println(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
+//				File file 
+//				= new File(root_path + attach_path + uuid +"_"+dto.getFile1().getOriginalFilename());
+//				dto.getFile1().transferTo(file);
+//				
+//			}else{
+//				//파일 없음
+//				System.out.println("선택 파일 없음~");
+//			}
+//					
+//		
 			String result_page = "";
 			if(result == 1) {
 				result_page = "redirect:/board_list";
 			}
 			
 			return result_page;
+			
+			
 		}
 	
 
