@@ -7,8 +7,8 @@
 <mapper namespace="mapper.member">
 
 	<insert id="join" parameterType="com.spring.dto.MemberDto">
-		insert into member
-			values(#{id},#{pass},#{name},#{gender},#{email},#{address},#{tel},#{hp_num},#{hobby},#{intro})	
+		insert into member 
+			values(#{id},#{pass},#{name},#{gender},#{email},#{address},#{tel},#{hp_num},#{hobby},#{intro} )		
 	</insert>
 	
 	<select id="listAll"
@@ -16,6 +16,10 @@
 		select rownum rno,id, name, email, hp_num, hobby 
 				 from (select id, name, email, hp_num, hobby 
 				        from member  order by id)
+	</select>
+
+	<select id="login"  parameterType="com.spring.dto.MemberDto"  resultType="int">
+		SELECT COUNT(id) FROM MEMBER WHERE ID=#{id} and pass=#{pass}
 	</select>
 	
 	

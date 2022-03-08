@@ -27,9 +27,9 @@ public class JoinController {
 		ModelAndView mv = new ModelAndView();
 //		MemberDao dao = new MemberDao();
 //		int result = dao.insert(dto);
-		
+		System.out.println("1111");
 		int result = memberService.getJoin(dto);
-		
+		System.out.println("2222");
 		String result_page = "";
 		
 		if(result == 1) {

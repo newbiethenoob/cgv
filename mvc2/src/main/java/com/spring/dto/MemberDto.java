@@ -8,8 +8,8 @@ public class MemberDto {
 	 * 
 	 */
 	int rno;
-	String id, pass, name, gender, email1, email2, email, 
-		addr1, addr2, address, tel, hp1, hp2, hp3, hp_num, intro, hobby;
+	String id, pass, name, gender, email1, email2, email, addr1, addr2, address, tel,
+		hp1, hp2, hp3, hp_num, intro, hobby;
 	String[] hobby_list;
 	
 //	Getter, Setter
@@ -56,8 +56,8 @@ public class MemberDto {
 		this.email2 = email2;
 	}
 	public String getEmail() {
-		if(email1 !=null) {
-			email = email1+"@"+email2;
+		if(email1 != null) {
+			email = email1 +"@"+email2;
 		}
 		return email;
 	}
@@ -77,7 +77,7 @@ public class MemberDto {
 		this.addr2 = addr2;
 	}
 	public String getAddress() {
-		return addr1+"	"+addr2;
+		return addr1 +"  " + addr2;
 	}
 	public void setAddress(String address) {
 		this.address = address;
@@ -108,7 +108,7 @@ public class MemberDto {
 	}
 	public String getHp_num() {
 		if(hp1 != null) {
-			hp_num = hp1+"-"+hp2+"-"+hp3;
+			hp_num = hp1+"-" +hp2+"-"+hp3;
 		}
 		return hp_num;
 	}
@@ -122,9 +122,9 @@ public class MemberDto {
 		this.intro = intro;
 	}
 	public String getHobby() {
-		if(hobby_list.length != 0) {
+		if(hobby_list != null) {
 			hobby = String.join(",", hobby_list);
-		}
+		}		
 		return hobby;
 	}
 	public void setHobby(String hobby) {
@@ -133,11 +133,9 @@ public class MemberDto {
 	public String[] getHobby_list() {
 		return hobby_list;
 	}
-	public void setHobby_list(String[] hobby_list) {
-		for(String hobby : hobby_list)
-			System.out.println("hobby ---> "+hobby);
+	public void setHobby_list(String[] hobby_list) {			
 		this.hobby_list = hobby_list;
-	}
+	}	
 	
 	
-	}
+}
