@@ -10,7 +10,7 @@ public class MypageController {
 //	mypage 화면 매핑 주소
 	@RequestMapping(value="/mycgv", method=RequestMethod.GET)
 	public String mypage() {
-		return "/mycgv";
+		return "/mypage/mycgv";
 	}
 
 }

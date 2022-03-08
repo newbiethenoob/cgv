@@ -14,12 +14,12 @@
 				<ul>
 					<li><a href="http://localhost:8899/mvc2/login" target="_parent">로그인</a></li>
 					<li><a href="http://localhost:8899/mvc2/join" target="_parent">회원가입</a></li>
-					<li><a href="http://localhost:8899/mvc2/mypage/mycgv" target="_parent">MyCGV</a></li>
+					<li><a href="http://localhost:8899/mvc2/mycgv" target="_parent">MyCGV</a></li>
 					<li><a href="">VIP</a></li>
 					<li><a href="">고객센터</a></li>
-					<li><a href="http://localhost:8899/mvc2/notice/notice_list" target="_parent">공지사항</a></li>
-					<li><a href="http://localhost:8899/mvc2/board/board_list" target="_parent">게시판</a></li>
-					<li><a href="http://localhost:8899/mvc2/admin/admin" target="_parent">ADMIN</a></li>
+					<li><a href="http://localhost:8899/mvc2/notice_list" target="_parent">공지사항</a></li>
+					<li><a href="http://localhost:8899/mvc2/board_list" target="_parent">게시판</a></li>
+					<li><a href="http://localhost:8899/mvc2/admin" target="_parent">ADMIN</a></li>
 				</ul>
 			</nav>
 			<div class="relative">
