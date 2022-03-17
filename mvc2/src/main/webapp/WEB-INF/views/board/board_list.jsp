@@ -7,6 +7,35 @@
 <meta charset="UTF-8">
 <title>CGV-게시판</title>
 <link href="http://localhost:8899/mvc2/resources/css/cgv.css" rel="stylesheet">
+<link rel="stylesheet" href="http://localhost:8899/model2/resources/css/am-pagination.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="http://localhost:8899/model2/resources/js/am-pagination.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		var pager = jQuery('#ampaginationsm').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: '${dbCount}',	// total pages	
+		    page: '${rpage}',		// initial page		
+		    pageSize: 5,			// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           $(location).attr('href', "http://localhost:8899/model2/board_list?rpage="+e.page);         
+	    });
+		
+ 	});
+</script> 
 </head>
 <body>
 	<!-- header start -->
@@ -37,7 +66,9 @@
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="4"><< 1  2  3  4  5  >></td>					
+					<%-- 페이지 네비게이션 시작 --%>						
+					<td colspan=4><div id="ampaginationsm"></div></td>
+					<%-- 페이지 네비게이션 종료  --%>				
 				</tr>
 			</table>
 		</section>		

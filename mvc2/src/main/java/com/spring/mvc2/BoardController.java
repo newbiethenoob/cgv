@@ -32,12 +32,40 @@ public class BoardController {
 	 * @return
 	 */
 	@RequestMapping(value="/board_list", method=RequestMethod.GET)
-	public ModelAndView board_list() {
+	public ModelAndView board_list(String rpage) {
 		ModelAndView mv = new ModelAndView();
-		ArrayList<BoardDto> list = (ArrayList<BoardDto>)boardService.getList();
+		
+		//페이징 처리 - startCount, endCount 구하기
+		int startCount = 0;
+		int endCount = 0;
+		int pageSize = 5;	//한페이지당 게시물 수
+		int reqPage = 1;	//요청페이지	
+		int pageCount = 1;	//전체 페이지 수
+		int dbCount = boardService.getTotalCount();	//DB에서 가져온 전체 행수
+		
+		//총 페이지 수 계산
+		if(dbCount % pageSize == 0){
+			pageCount = dbCount/pageSize;
+		}else{
+			pageCount = dbCount/pageSize+1;
+		}
+		
+		//요청 페이지 계산
+		if(rpage != null){
+			reqPage = Integer.parseInt(rpage);
+			startCount = (reqPage-1) * pageSize+1;
+			endCount = reqPage *pageSize;
+		}else{
+			startCount = 1;
+			endCount = 5;
+		}
+		
+		ArrayList<BoardDto> list = (ArrayList<BoardDto>)boardService.getList(startCount, endCount);
 		
 		mv.setViewName("/board/board_list");
 		mv.addObject("list", list);
+		mv.addObject("dbCount", dbCount);
+		mv.addObject("rpage", rpage);
 		
 		return mv;
 	}

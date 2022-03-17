@@ -1,7 +1,9 @@
 package com.spring.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +27,22 @@ public class BoardDao{
 	}
 	
 	/** 
+	 * R : 게시글 전체 count
+	 */
+	public int selectCount(){
+		return sqlSession.selectOne(namespace + ".count");	
+	}
+	
+	/** 
 	 * R : 게시글 전체 select
 	 */
-	public List<BoardDto> select(){
+	public List<BoardDto> select(int startCount, int endCount){
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", startCount);
+		map.put("end", endCount);
+		
 		List<BoardDto> list = new ArrayList<BoardDto>();
-		list = sqlSession.selectList(namespace + ".listAll");
+		list = sqlSession.selectList(namespace + ".listAll", map);
 		
 		return list;		
 	}

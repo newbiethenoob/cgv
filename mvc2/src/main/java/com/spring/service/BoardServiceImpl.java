@@ -44,10 +44,15 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.insert(dto);
 	}
 	
-	
-//	전체 리스트
+	/** 게시글 전체 카운트 **/
 	@Override
-	public List<BoardDto> getList(){
-		return boardDao.select();
+	public int getTotalCount() {
+		return boardDao.selectCount();
+	}
+	
+	/** 전체 리스트 */
+	@Override
+	public List<BoardDto> getList(int startCount, int endCount){
+		return boardDao.select(startCount, endCount);
 	}
 }
